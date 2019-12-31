@@ -1,0 +1,30 @@
+# Migration configuration for user accounts. We've described most of what goes
+# into migration configuration in migrate_plus.migration.beer_term.yml, so won't
+# repeat that here.
+id: boyd_user
+label: Boyd Users
+migration_group: boyd_mig
+source:
+  plugin: content_entity:user
+destination:
+  plugin: entity:user
+process:
+  pass: pass
+  mail: mail
+  name: name
+  timezone: timezone
+  created: created
+  init: mail
+  status: status
+  roles:
+    plugin: default_value
+    default_value: 2
+
+
+# When a module is creating a custom content type it needs to add an 
+# enforced dependency to itself, otherwise the content type will persist
+# after the module is disabled. See: https://www.drupal.org/node/2629516.
+dependencies:
+  enforced:
+    module:
+      - boydmig
