@@ -1,3 +1,8 @@
 # Drupal 8 to 8 migration
 
-So far, articles and users
+Images: used migrate_directory
+
+Taxonomy: used json api and json data_parser_plugin
+
+Articles, Pages and other content: will probably use json
+
